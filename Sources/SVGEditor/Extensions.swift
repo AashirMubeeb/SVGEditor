@@ -11,14 +11,14 @@ extension CGAffineTransform {
 }
 
 
-extension CALayer {
-    private static let lockKey = "isLocked"
+public extension CALayer {
+    public static let lockKey = "isLocked"
     
-    func setLockStatus(_ isLocked: Bool) {
+    public func setLockStatus(_ isLocked: Bool) {
         setValue(isLocked, forKey: Self.lockKey)
     }
     
-    func getLockStatus() -> Bool {
+    public  func getLockStatus() -> Bool {
         return value(forKey: Self.lockKey) as? Bool ?? false
     }
 }
