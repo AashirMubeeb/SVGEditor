@@ -6,14 +6,14 @@ import SVGKit
 #if IOS
 import UIKit
 
-public protocol SVGEditorDelegate:AnyObject {
+protocol SVGEditorDelegate:AnyObject {
     func selectedSticker(layer:CALayer?)
     func updateStickerSize(layer: CALayer?)
     func updateStatus()
     func changeText()
 }
 public let shareUndoManager:UndoManager = UndoManager()
-public class SVGEditor: UIView,UIGestureRecognizerDelegate {
+open class SVGEditor: UIView,UIGestureRecognizerDelegate {
     weak var delegate:SVGEditorDelegate!
     let TEXT_MAX_VALUE = CGFloat(500)
     let Shape_MAX_VALUE = CGFloat(500)
