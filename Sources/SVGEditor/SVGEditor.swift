@@ -13,7 +13,7 @@ protocol SVGEditorDelegate:AnyObject {
     func changeText()
 }
 let shareUndoManager:UndoManager = UndoManager()
-class VectorEditor: UIView,UIGestureRecognizerDelegate {
+public class VectorEditor: UIView,UIGestureRecognizerDelegate {
     weak var delegate:SVGEditorDelegate!
     let TEXT_MAX_VALUE = CGFloat(500)
     let Shape_MAX_VALUE = CGFloat(500)
@@ -41,15 +41,15 @@ class VectorEditor: UIView,UIGestureRecognizerDelegate {
             self.delegate.selectedSticker(layer: selectedVector)
         }
     }
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         configUI()
     }
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
         configUI()
     }
-    override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
+    public override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         var tempLayer: CALayer? = nil
         var newPoint = self.convert(point, to: self.containerView)
         for layer in self.layers {
@@ -571,7 +571,7 @@ class VectorEditor: UIView,UIGestureRecognizerDelegate {
         layers.remove(at: index)
     }
 }
-extension VectorEditor{
+public extension VectorEditor{
     func insetImageLayer(image:UIImage,frame:CGRect,_ transform:CGAffineTransform? = .identity) {
         let layer = CAShapeLayer()
         layer.frame = frame
@@ -870,7 +870,7 @@ extension VectorEditor{
         }
     }
 }
-extension SVGTextLayer {
+public extension SVGTextLayer {
     func fontAtLocation(location: Int) -> UIFont? {
         if let attributedString = self.string as? NSAttributedString {
             let font = attributedString.attribute(.font, at: location, effectiveRange: nil) as? UIFont
