@@ -887,4 +887,8 @@ public extension SVGTextLayer {
     }
 }
 
+open class Test:UIView{
+    
+}
+
 #endif
