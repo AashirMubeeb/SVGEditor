@@ -6,14 +6,14 @@ import SVGKit
 #if IOS
 import UIKit
 
-protocol SVGEditorDelegate:AnyObject {
+public protocol SVGEditorDelegate:AnyObject {
     func selectedSticker(layer:CALayer?)
     func updateStickerSize(layer: CALayer?)
     func updateStatus()
     func changeText()
 }
-let shareUndoManager:UndoManager = UndoManager()
-public class VectorEditor: UIView,UIGestureRecognizerDelegate {
+public let shareUndoManager:UndoManager = UndoManager()
+public class SVGEditor: UIView,UIGestureRecognizerDelegate {
     weak var delegate:SVGEditorDelegate!
     let TEXT_MAX_VALUE = CGFloat(500)
     let Shape_MAX_VALUE = CGFloat(500)
@@ -571,7 +571,7 @@ public class VectorEditor: UIView,UIGestureRecognizerDelegate {
         layers.remove(at: index)
     }
 }
-public extension VectorEditor{
+public extension SVGEditor{
     func insetImageLayer(image:UIImage,frame:CGRect,_ transform:CGAffineTransform? = .identity) {
         let layer = CAShapeLayer()
         layer.frame = frame
